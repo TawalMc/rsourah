@@ -1,27 +1,44 @@
-import { Box, Button, Heading, HStack, Text } from "@chakra-ui/react";
+import { Heading, HStack, Text } from "@chakra-ui/react";
+import { Trans } from "@lingui/macro";
+
 import MainBackground from "../layouts/MainBackground";
 import MainContainer from "../layouts/MainContainer";
 
-export default function Home() {
+import loadTranslation from "../libs/loadTranslation";
+import NextButton from "../components/NextButton";
+
+export default function Home(props) {
   return (
     <MainBackground>
       <MainContainer>
         <Heading color="white" size="xl" marginY="10px">
-          PAIX ET BENEDICTIONS D'ALLAH SUR VOUS.
+          <Trans id="tr-greetings_muslim">
+            PAIX ET BÉNÉDICTIONS D'ALLAH SUR VOUS.
+          </Trans>
         </Heading>
         <Text color="white" fontSize="xl" opacity={0.8}>
-          Parfois il est difficile de choisir la sourate à lire lors de la
-          prière, laissez alors notre application vous choisir ces 02 sourates.
+          <Trans id="tr-app_goal">
+            Parfois il est difficile de choisir la sourate à lire lors de la
+            prière, laissez alors notre application vous choisir ces 2 sourates.
+          </Trans>
         </Text>
         <HStack marginTop="30px">
-          <Button
-            size="lg"
-            bgGradient="linear(to-r, gray.300, yellow.400, pink.200)"
-          >
-            Suivant
-          </Button>
+          <NextButton href="/sourah" />
         </HStack>
       </MainContainer>
     </MainBackground>
   );
 }
+
+export const getStaticProps = async (ctx) => {
+  const translation = await loadTranslation(
+    ctx?.locale,
+    process.env.NODE_ENV === "production"
+  );
+
+  return {
+    props: {
+      translation,
+    },
+  };
+};

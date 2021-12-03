@@ -1,5 +1,7 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import { extendTheme } from "@chakra-ui/react";
+import { I18nProvider } from "@lingui/react";
+import { i18n } from "@lingui/core";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { useRouter } from "next/dist/client/router";
 
 const theme = extendTheme({
   fonts: {
@@ -9,10 +11,20 @@ const theme = extendTheme({
 });
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  const locale = router.locale || router.defaultLocale;
+
+  if (pageProps.translation) {
+    i18n.load(locale, pageProps.translation);
+    i18n.activate(locale);
+  }
+
   return (
-    <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <I18nProvider i18n={i18n}>
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </I18nProvider>
   );
 }
 

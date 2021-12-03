@@ -5,19 +5,30 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "extract": "lingui extract",
+    "compile": "lingui compile"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.7.2",
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
+    "@lingui/react": "^3.12.1",
     "framer-motion": "^4.1.17",
+    "make-plural": "^6.2.2",
     "next": "12.0.4",
     "react": "17.0.2",
+    "react-cookie": "^4.1.1",
     "react-dom": "17.0.2",
-    "react-icons": "^4.3.1"
+    "react-icons": "^4.3.1",
+    "swr": "^1.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@lingui/cli": "^3.12.1",
+    "@lingui/loader": "^3.12.1",
+    "@lingui/macro": "^3.12.1",
+    "babel-plugin-macros": "^2.8.0",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.4"
   }
