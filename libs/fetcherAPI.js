@@ -1,3 +1,5 @@
+import useSWRImmutable from "swr/immutable";
+
 const BASE_API = "https://api.quran.com/api/v4";
 export const LOCAL_KEYS = {
   SOURAH_INTERVALE: "sourah_intervale",
@@ -13,21 +15,8 @@ class QuranChapter {
   }
 }
 
-export const fetcher = async (url) => {
-  try {
-    const response = await fetch(url);
-    const jsonData = await response.json();
-    return { res: jsonData, status: true };
-  } catch (error) {
-    return {
-      res: null,
-      status: false,
-    };
-  }
-};
-
 const parseQuranAPI = (data) => {
-  const quranAllChapters = data.chapters.map((sourah, index) => {
+  const quranAllChapters = data.chapters.map((sourah, _) => {
     const { id, name_simple, name_arabic, verses_count } = sourah;
 
     return new QuranChapter(
@@ -42,27 +31,20 @@ const parseQuranAPI = (data) => {
   return quranAllChapters;
 };
 
-export const getQuran = async (lang) => {
-  if (typeof window !== "undefined") {
-    let quranList = JSON.parse(localStorage.getItem(`version_${lang}`));
-    if (quranList == null) {
-      const { res, status } = await fetcher(
-        `${BASE_API}/chapters?language=${lang}`
-      );
-      if (status) {
-        quranList = parseQuranAPI(res);
-        localStorage.setItem(`version_${lang}`, JSON.stringify(quranList));
-      }
-    }
+const fetcherQuran = (...args) =>
+  fetch(...args)
+    .then((res) => res.json())
+    .then((res) => parseQuranAPI(res));
 
-    return {
-      res: quranList,
-      status: true,
-    };
-  }
+export default function useQuran(lang) {
+  const { data, error } = useSWRImmutable(
+    `${BASE_API}/chapters?language=${lang}`,
+    fetcherQuran
+  );
 
   return {
-    res: null,
-    status: false,
+    quranAllChapters: data,
+    isLoading: !data && !error,
+    isError: error,
   };
-};
+}

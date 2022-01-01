@@ -1,3 +1,4 @@
+import React from "react";
 import { Heading, HStack, Spinner, Text } from "@chakra-ui/react";
 import { Trans } from "@lingui/macro";
 import { useCookies } from "react-cookie";
@@ -6,23 +7,19 @@ import MainBackground from "../layouts/MainBackground";
 import MainContainer from "../layouts/MainContainer";
 import loadTranslation from "../libs/loadTranslation";
 import NextButton from "../components/NextButton";
+import SourahChoosedIntervale from "../components/SourahChoosedIntervale";
+import SourahBox from "../components/SourahBox";
+import {
+  INITIAL_STATE,
+  SourahIntervaleContext,
+  SourahIntervaleReducer,
+} from "../libs/sourahIntervaleContext";
 
 export default function Sourah(props) {
-  const cookie = useCookies()[0];
-
-  const SpinnerBox = () => {
-    return (
-      <HStack width="100%" justifyContent="center">
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="green.200"
-          size="lg"
-        />
-      </HStack>
-    );
-  };
+  const [state, dispatch] = React.useReducer(
+    SourahIntervaleReducer,
+    INITIAL_STATE
+  );
 
   return (
     <MainBackground>
@@ -35,6 +32,10 @@ export default function Sourah(props) {
             Définissez l'intervalle de choix des sourates.
           </Trans>
         </Text>
+        <SourahIntervaleContext.Provider value={{ state, dispatch }}>
+          <SourahChoosedIntervale />
+          <SourahBox />
+        </SourahIntervaleContext.Provider>
         <NextButton href="/rakaat" />
       </MainContainer>
     </MainBackground>
