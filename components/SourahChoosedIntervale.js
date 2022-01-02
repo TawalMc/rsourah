@@ -1,28 +1,29 @@
 import { HStack, Text, Icon } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { RiArrowLeftRightLine } from "react-icons/ri";
-import {
-  ACTION,
-  INITIAL_STATE,
-  SourahIntervaleContext,
-  SourahIntervaleReducer,
-} from "../libs/sourahIntervaleContext";
+import { useIntervalleChoosed } from "../libs/sourahIntervaleContext";
 
 export default function SourahChoosedIntervale() {
-  const [state, dispatch] = React.useReducer(
-    SourahIntervaleReducer,
-    INITIAL_STATE
-  );
+  const state = useIntervalleChoosed()[0];
+  const setIsNew = React.useState(false)[1];
+  useEffect(() => {
+    let repeatCheck = setInterval(() => {
+      setIsNew((old) => !old);
+    }, 700);
 
-  console.log(state);
+    return () => {
+      clearInterval(repeatCheck);
+    };
+  }, []);
+
   return (
     <HStack marginY="10px" justifyContent="space-around">
       <Text color="white" opacity={0.8}>
-        1
+        {state.sourahIntervalle[0]}
       </Text>
       <Icon as={RiArrowLeftRightLine} boxSize={5} color="white" opacity={0.8} />
       <Text color="white" opacity={0.8}>
-        114
+        {state.sourahIntervalle[1]}
       </Text>
     </HStack>
   );

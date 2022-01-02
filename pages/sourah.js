@@ -9,17 +9,10 @@ import loadTranslation from "../libs/loadTranslation";
 import NextButton from "../components/NextButton";
 import SourahChoosedIntervale from "../components/SourahChoosedIntervale";
 import SourahBox from "../components/SourahBox";
-import {
-  INITIAL_STATE,
-  SourahIntervaleContext,
-  SourahIntervaleReducer,
-} from "../libs/sourahIntervaleContext";
+import { useIntervalleChoosed } from "../libs/sourahIntervaleContext";
 
 export default function Sourah(props) {
-  const [state, dispatch] = React.useReducer(
-    SourahIntervaleReducer,
-    INITIAL_STATE
-  );
+  const [state, actions] = useIntervalleChoosed();
 
   return (
     <MainBackground>
@@ -32,10 +25,8 @@ export default function Sourah(props) {
             Définissez l'intervalle de choix des sourates.
           </Trans>
         </Text>
-        <SourahIntervaleContext.Provider value={{ state, dispatch }}>
-          <SourahChoosedIntervale />
-          <SourahBox />
-        </SourahIntervaleContext.Provider>
+        <SourahChoosedIntervale />
+        <SourahBox />
         <NextButton href="/rakaat" />
       </MainContainer>
     </MainBackground>

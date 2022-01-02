@@ -3,8 +3,10 @@ import MainBackground from "../layouts/MainBackground";
 import RakaatBox from "../components/RakaatBox";
 import loadTranslation from "../libs/loadTranslation";
 import NextButton from "../components/NextButton";
+import { useIntervalleChoosed } from "../libs/sourahIntervaleContext";
 
 export default function Rakaat(props) {
+  const state = useIntervalleChoosed()[0];
   return (
     <MainBackground>
       <MainContainer>
