@@ -5,7 +5,7 @@ export const LOCAL_KEYS = {
   SOURAH_INTERVALE: "sourah_intervale",
 };
 
-class QuranChapter {
+export class QuranChapter {
   constructor(id, name_arabic, name_simple, verses_count, name) {
     this.id = id;
     this.name_arabic = name_arabic;

@@ -5,6 +5,7 @@ import { useRouter } from "next/dist/client/router";
 import useQuran from "../libs/fetcherAPI";
 import SpinnerBox from "./SipinnerBox";
 import SourahComponent from "./SourahComponent";
+import { addSourahAPI } from "../libs/db";
 
 export default function SourahBox({}) {
   const cookie = useCookies()[0];
@@ -12,9 +13,9 @@ export default function SourahBox({}) {
   const lang = cookie.NEXT_LOCALE || router.locale;
   const { quranAllChapters, isLoading } = useQuran(lang);
 
-  const handleCheckBoxChange = () => {};
-
   if (isLoading) return <SpinnerBox />;
+
+  addSourahAPI(quranAllChapters);
 
   return (
     <VStack

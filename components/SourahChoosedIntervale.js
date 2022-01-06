@@ -1,14 +1,19 @@
 import { HStack, Text, Icon } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { RiArrowLeftRightLine } from "react-icons/ri";
+import { addIntervale, getIntervalle } from "../libs/db";
 import { useIntervalleChoosed } from "../libs/sourahIntervaleContext";
 
 export default function SourahChoosedIntervale() {
   const state = useIntervalleChoosed()[0];
   const setIsNew = React.useState(false)[1];
   useEffect(() => {
+    // if (state != null)
+
     let repeatCheck = setInterval(() => {
       setIsNew((old) => !old);
+      //
+      addIntervale(state.sourahIntervalle);
     }, 700);
 
     return () => {

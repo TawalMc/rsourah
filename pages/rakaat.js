@@ -4,14 +4,31 @@ import RakaatBox from "../components/RakaatBox";
 import loadTranslation from "../libs/loadTranslation";
 import NextButton from "../components/NextButton";
 import { useIntervalleChoosed } from "../libs/sourahIntervaleContext";
+import { useEffect, useState } from "react";
+import { getIntervalle, getChoosedSourah } from "../libs/db";
 
 export default function Rakaat(props) {
-  const state = useIntervalleChoosed()[0];
+  const [souraIntervale, setSourahIntervale] = useState([]);
+  const [sourahRakaat, setSourahRakaat] = useState([]);
+
+  useEffect(async () => {
+    let stored = await getIntervalle();
+    let sourahList = stored.data;
+    setSourahIntervale(sourahList);
+
+    let state = [
+      await getChoosedSourah(sourahList[0]),
+      await getChoosedSourah(sourahList[1]),
+    ];
+
+    setSourahRakaat(state);
+  }, []);
+
   return (
     <MainBackground>
       <MainContainer>
-        <RakaatBox nbRakaat={1} />
-        <RakaatBox nbRakaat={2} />
+        <RakaatBox {...sourahRakaat[0]} nbRakaat={1} />
+        <RakaatBox {...sourahRakaat[1]} nbRakaat={2} />
         <NextButton href="settings" />
       </MainContainer>
     </MainBackground>

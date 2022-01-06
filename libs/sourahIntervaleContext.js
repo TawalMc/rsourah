@@ -1,5 +1,6 @@
 import React from "react";
 import { createHook, createStore } from "react-sweet-state";
+import { db, getIntervalle } from "./db";
 
 const sourahIntervaleReducer = (oldValue, id) => {
   //
@@ -13,9 +14,13 @@ const sourahIntervaleReducer = (oldValue, id) => {
   }
 
   newSourahIntervalle.sort((a, b) => a - b);
-  console.log(newSourahIntervalle);
 
   return newSourahIntervalle;
+};
+
+const getIntervalleChoosed = async () => {
+  let stored = await getIntervalle();
+  return stored.data;
 };
 
 const Store = createStore({
@@ -32,7 +37,6 @@ const Store = createStore({
         });
       },
   },
-  name: "intervalle",
 });
 
 const useIntervalleChoosed = createHook(Store);
