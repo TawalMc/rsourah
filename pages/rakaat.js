@@ -5,11 +5,28 @@ import loadTranslation from "../libs/loadTranslation";
 import NextButton from "../components/NextButton";
 import { useIntervalleChoosed } from "../libs/sourahIntervaleContext";
 import { useEffect, useState } from "react";
+import random from "lodash.random";
 import { getIntervalle, getChoosedSourah } from "../libs/db";
 
 export default function Rakaat(props) {
-  const [souraIntervale, setSourahIntervale] = useState([]);
+  const [sourahIntervale, setSourahIntervale] = useState([]);
   const [sourahRakaat, setSourahRakaat] = useState([]);
+  const [isNew, setIsNew] = useState(false);
+
+  const randomSourah = async (index) => {
+    let r = random(sourahIntervale[0], sourahIntervale[1], false);
+    let s = await getChoosedSourah(r);
+
+    setSourahRakaat((old) => {
+      let n = old;
+      n[index - 1] = s;
+      console.log(n);
+      return n;
+    });
+    setIsNew((old) => !old);
+  };
+
+  // console.log(sourahRakaat);
 
   useEffect(async () => {
     let stored = await getIntervalle();
@@ -27,8 +44,16 @@ export default function Rakaat(props) {
   return (
     <MainBackground>
       <MainContainer>
-        <RakaatBox {...sourahRakaat[0]} nbRakaat={1} />
-        <RakaatBox {...sourahRakaat[1]} nbRakaat={2} />
+        <RakaatBox
+          {...sourahRakaat[0]}
+          nbRakaat={1}
+          randomSourah={randomSourah}
+        />
+        <RakaatBox
+          {...sourahRakaat[1]}
+          nbRakaat={2}
+          randomSourah={randomSourah}
+        />
         <NextButton href="settings" />
       </MainContainer>
     </MainBackground>

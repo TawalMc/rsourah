@@ -10,6 +10,7 @@ export default function RakaatBox({
   name,
   verses_count,
   nbRakaat,
+  randomSourah,
 }) {
   return (
     <VStack height="40vh">
@@ -34,6 +35,7 @@ export default function RakaatBox({
           </Text>
         </Circle>
         <IconButton
+          onClick={() => randomSourah(nbRakaat)}
           width="48px"
           height="48px"
           borderRadius="24px"
