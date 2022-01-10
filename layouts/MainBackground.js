@@ -1,4 +1,5 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
+import About from "../components/About";
 
 export default function MainBackground(props) {
   // bgGradient="linear-gradient(90deg, rgba(22,16,55,1) 100%, rgba(9,9,121,1) 100%, rgba(39,40,96,1) 100%)"
@@ -12,6 +13,7 @@ export default function MainBackground(props) {
       paddingLeft="20px"
     >
       {props.children}
+      <About />
     </Box>
   );
 }

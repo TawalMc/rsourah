@@ -54,7 +54,7 @@ export default function Rakaat(props) {
           nbRakaat={2}
           randomSourah={randomSourah}
         />
-        <NextButton href="settings" />
+        {/* <NextButton href="settings" /> */}
       </MainContainer>
     </MainBackground>
   );

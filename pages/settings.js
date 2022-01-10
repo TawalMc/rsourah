@@ -20,6 +20,9 @@ import MainBackground from "../layouts/MainBackground";
 import MainContainer from "../layouts/MainContainer";
 import loadTranslation from "../libs/loadTranslation";
 
+import SourahChoosedIntervale from "../components/SourahChoosedIntervale";
+import SourahBox from "../components/SourahBox";
+
 const langs = [
   {
     name: "fr",
@@ -77,6 +80,13 @@ export default function Settings(props) {
         <VStack spacing={5} alignItems="start" paddingY="10px">
           <LangMenu />
         </VStack>
+        <Text color="white" fontSize="xl" opacity={0.8}>
+          <Trans id="tr-choice_sourah">
+            Définissez l'intervalle de choix des sourates.
+          </Trans>
+        </Text>
+        <SourahChoosedIntervale />
+        <SourahBox />
       </MainContainer>
     </MainBackground>
   );

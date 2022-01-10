@@ -20,6 +20,7 @@ const sourahIntervaleReducer = (oldValue, id) => {
 
 const getIntervalleChoosed = async () => {
   let stored = await getIntervalle();
+  if (stored == undefined) return null;
   return stored.data;
 };
 
@@ -36,9 +37,16 @@ const Store = createStore({
           ),
         });
       },
+    load:
+      () =>
+      async ({ setState, getState }) => {
+        setState({
+          sourahIntervalle: await getIntervalleChoosed(),
+        });
+      },
   },
 });
 
 const useIntervalleChoosed = createHook(Store);
 
-export { sourahIntervaleReducer, useIntervalleChoosed };
+export { sourahIntervaleReducer, useIntervalleChoosed, getIntervalleChoosed };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Heading, HStack, Spinner, Text } from "@chakra-ui/react";
 import { Trans } from "@lingui/macro";
 import { useCookies } from "react-cookie";
@@ -12,8 +12,6 @@ import SourahBox from "../components/SourahBox";
 import { useIntervalleChoosed } from "../libs/sourahIntervaleContext";
 
 export default function Sourah(props) {
-  const [state, actions] = useIntervalleChoosed();
-
   return (
     <MainBackground>
       <MainContainer>

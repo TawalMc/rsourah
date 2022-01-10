@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Box, HStack, IconButton, Text } from "@chakra-ui/react";
-import { RiHome2Line, RiSoundModuleLine } from "react-icons/ri";
+import { RiHome2Line, RiSoundModuleLine, RiShuffleLine } from "react-icons/ri";
 
 export default function Menu(props) {
   return (
@@ -10,8 +10,14 @@ export default function Menu(props) {
           variant="outline"
           aria-label="Go to Home"
           icon={<RiHome2Line color="white" />}
-          /* fontSize="20px"
-        size="lg" */
+          isRound
+        />
+      </Link>
+      <Link href="/rakaat">
+        <IconButton
+          variant="outline"
+          aria-label="Go to Rakaat"
+          icon={<RiShuffleLine color="white" />}
           isRound
         />
       </Link>
@@ -20,8 +26,6 @@ export default function Menu(props) {
           variant="outline"
           aria-label="Go to Settings"
           icon={<RiSoundModuleLine color="white" />}
-          /* fontSize="20px"
-        size="lg" */
           isRound
         />
       </Link>

@@ -6,8 +6,26 @@ import MainContainer from "../layouts/MainContainer";
 
 import loadTranslation from "../libs/loadTranslation";
 import NextButton from "../components/NextButton";
+import {
+  getIntervalleChoosed,
+  useIntervalleChoosed,
+} from "../libs/sourahIntervaleContext";
+import { useEffect, useState } from "react";
 
 export default function Home(props) {
+  const [state, actions] = useIntervalleChoosed();
+  const [isDB, setIsDB] = useState(false);
+
+  console.log(state);
+
+  useEffect(async () => {
+    let arr = await getIntervalleChoosed();
+    if (arr !== null) {
+      setIsDB(true);
+      actions.load();
+    }
+  });
+
   return (
     <MainBackground>
       <MainContainer>
@@ -23,7 +41,7 @@ export default function Home(props) {
           </Trans>
         </Text>
         <HStack marginTop="30px">
-          <NextButton href="/sourah" />
+          <NextButton href={!isDB ? "/sourah" : "/rakaat"} />
         </HStack>
       </MainContainer>
     </MainBackground>
