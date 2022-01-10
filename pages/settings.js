@@ -82,7 +82,7 @@ export default function Settings(props) {
         </VStack>
         <Text color="white" fontSize="xl" opacity={0.8}>
           <Trans id="tr-choice_sourah">
-            Définissez l'intervalle de choix des sourates.
+            {"Définissez l'intervalle de choix des sourates."}
           </Trans>
         </Text>
         <SourahChoosedIntervale />

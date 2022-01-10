@@ -18,20 +18,24 @@ export default function Home(props) {
 
   console.log(state);
 
-  useEffect(async () => {
+  const fetchIntervale = async () => {
     let arr = await getIntervalleChoosed();
     if (arr !== null) {
       setIsDB(true);
       actions.load();
     }
-  });
+  };
+
+  useEffect(() => {
+    fetchIntervale();
+  }, []);
 
   return (
     <MainBackground>
       <MainContainer>
         <Heading color="white" size="xl" marginY="10px">
           <Trans id="tr-greetings_muslim">
-            PAIX ET BÉNÉDICTIONS D'ALLAH SUR VOUS.
+            {"PAIX ET BÉNÉDICTIONS D'ALLAH SUR VOUS."}
           </Trans>
         </Heading>
         <Text color="white" fontSize="xl" opacity={0.8}>

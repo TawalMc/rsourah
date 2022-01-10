@@ -26,9 +26,7 @@ export default function Rakaat(props) {
     setIsNew((old) => !old);
   };
 
-  // console.log(sourahRakaat);
-
-  useEffect(async () => {
+  const fetchIntervale = async () => {
     let stored = await getIntervalle();
     let sourahList = stored.data;
     setSourahIntervale(sourahList);
@@ -39,6 +37,10 @@ export default function Rakaat(props) {
     ];
 
     setSourahRakaat(state);
+  };
+
+  useEffect(() => {
+    fetchIntervale();
   }, []);
 
   return (

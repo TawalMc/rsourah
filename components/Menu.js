@@ -5,7 +5,7 @@ import { RiHome2Line, RiSoundModuleLine, RiShuffleLine } from "react-icons/ri";
 export default function Menu(props) {
   return (
     <HStack justifyContent="space-between">
-      <Link href="/">
+      <Link href="/" passHref>
         <IconButton
           variant="outline"
           aria-label="Go to Home"
@@ -13,7 +13,7 @@ export default function Menu(props) {
           isRound
         />
       </Link>
-      <Link href="/rakaat">
+      <Link href="/rakaat" passHref>
         <IconButton
           variant="outline"
           aria-label="Go to Rakaat"
@@ -21,7 +21,7 @@ export default function Menu(props) {
           isRound
         />
       </Link>
-      <Link href="/settings">
+      <Link href="/settings" passHref>
         <IconButton
           variant="outline"
           aria-label="Go to Settings"
