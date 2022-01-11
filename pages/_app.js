@@ -2,6 +2,7 @@ import { I18nProvider } from "@lingui/react";
 import { i18n } from "@lingui/core";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
+import { initTranslation } from "../libs/loadTranslation";
 
 const theme = extendTheme({
   fonts: {
@@ -9,6 +10,8 @@ const theme = extendTheme({
     body: "Outfit",
   },
 });
+
+initTranslation(i18n);
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
