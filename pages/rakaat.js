@@ -62,7 +62,7 @@ export default function Rakaat(props) {
   );
 }
 
-export const getStaticProps = async (ctx) => {
+export const getServerSideProps = async (ctx) => {
   const translation = await loadTranslation(
     ctx?.locale,
     process.env.NODE_ENV === "production"
