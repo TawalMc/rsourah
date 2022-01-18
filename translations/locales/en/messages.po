@@ -17,6 +17,27 @@ msgstr ""
 msgid "tr-app_goal"
 msgstr "Sometimes it is difficult to choose the sura to read during the prayer, let our application choose these 2 suras for you"
 
+#: pages/settings.js:83
+#: pages/sourah.js:21
+msgid "tr-choice_sourah"
+msgstr "Define the interval for choosing the suras."
+
 #: pages/index.js:14
 msgid "tr-greetings_muslim"
 msgstr "PEACE AND BLESSINGS OF ALLAH UPON YOU."
+
+#: pages/settings.js:56
+msgid "tr-language"
+msgstr "Language"
+
+#: components/NextButton.js:12
+msgid "tr-next_btn"
+msgstr "Next"
+
+#: pages/settings.js:77
+msgid "tr-settings"
+msgstr "Settings"
+
+#: pages/sourah.js:18
+msgid "tr-sourah"
+msgstr "Sourah"

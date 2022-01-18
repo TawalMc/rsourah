@@ -1,6 +1,6 @@
 import Link from 'next/dist/client/link'
 import { Button } from '@chakra-ui/react'
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react";
 
 export default function NextButton( { href } ) {
 	return (

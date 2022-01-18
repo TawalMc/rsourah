@@ -1,5 +1,4 @@
 import {
-	Box,
 	Button,
 	Heading,
 	Menu,
@@ -13,6 +12,8 @@ import {
 import { useState, useEffect } from "react";
 import { RiArrowDownSLine } from "react-icons/ri";
 
+import { Trans } from "@lingui/react";
+
 import { useRouter } from "next/dist/client/router";
 import { useCookies } from "react-cookie";
 
@@ -22,7 +23,7 @@ import MainContainer from "../layouts/MainContainer";
 
 import SourahChoosedIntervale from "../components/SourahChoosedIntervale";
 import SourahBox from "../components/SourahBox";
-import { activate } from "../libs/loadTranslation";
+// import { activate } from "../libs/loadTranslation";
 
 const langs = [
 	{
@@ -52,7 +53,9 @@ export default function Settings( props ) {
 			<HStack spacing={5}>
 				<Menu>
 					<MenuButton as={Button} rightIcon={<RiArrowDownSLine />}>
-						Langue
+						<Trans id="tr-language">
+							Langue
+						</Trans>
 					</MenuButton>
 					<MenuList>
 						{langs.map( ( data, _ ) => (
@@ -71,13 +74,15 @@ export default function Settings( props ) {
 		<MainBackground>
 			<MainContainer>
 				<Heading color="white" marginY="10px">
-					Paramètres
+					<Trans id="tr-settings">Paramètres</Trans>
 				</Heading>
 				<VStack spacing={5} alignItems="start" paddingY="10px">
 					<LangMenu />
 				</VStack>
 				<Text color="white" fontSize="xl" opacity={0.8}>
-					{"Définissez l'intervalle de choix des sourates."}
+					<Trans id="tr-choice_sourah">
+						{"Définissez l'intervalle de choix des sourates."}
+					</Trans>
 				</Text>
 				<SourahChoosedIntervale />
 				<SourahBox />

@@ -17,6 +17,27 @@ msgstr ""
 msgid "tr-app_goal"
 msgstr "Parfois il est difficile de choisir la sourate à lire lors de la prière, laissez alors notre application vous choisir ces 2 sourates"
 
+#: pages/settings.js:83
+#: pages/sourah.js:21
+msgid "tr-choice_sourah"
+msgstr "Définissez l'intervalle de choix des sourates."
+
 #: pages/index.js:14
 msgid "tr-greetings_muslim"
 msgstr "PAIX ET BÉNÉDICTIONS D'ALLAH SUR VOUS."
+
+#: pages/settings.js:56
+msgid "tr-language"
+msgstr "Langue"
+
+#: components/NextButton.js:12
+msgid "tr-next_btn"
+msgstr "Suivant"
+
+#: pages/settings.js:77
+msgid "tr-settings"
+msgstr "Paramètres"
+
+#: pages/sourah.js:18
+msgid "tr-sourah"
+msgstr "Sourah"
