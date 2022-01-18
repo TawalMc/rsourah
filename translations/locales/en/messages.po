@@ -1,0 +1,22 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2022-01-18 06:41+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: pages/index.js:19
+msgid "tr-app_goal"
+msgstr "Sometimes it is difficult to choose the sura to read during the prayer, let our application choose these 2 suras for you"
+
+#: pages/index.js:14
+msgid "tr-greetings_muslim"
+msgstr "PEACE AND BLESSINGS OF ALLAH UPON YOU."

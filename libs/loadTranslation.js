@@ -1,24 +1,16 @@
-// import { fr, en } from "make-plural";
+import { i18n } from "@lingui/core";
+import { en, fr } from "make-plural/plurals";
 
-// export const initTranslation = (i18n) => {
-//   i18n.loadLocaleData({
-//     en: { plurals: en },
-//     fr: { plurals: fr },
-//     pseudo: { plurals: fr },
-//   });
-// };
+i18n.loadLocaleData("en", { plurals: en });
+i18n.loadLocaleData("cs", { plurals: fr });
 
-// const loadTranslation = async (locale, isProduction = true) => {
-//   let data;
-//   if (isProduction) {
-//     data = await import(`../translations/locales/${locale}/messages`);
-//   } else {
-//     data = await import(
-//       `@lingui/loader!../translations/locales/${locale}/messages.po`
-//     );
-//   }
-
-//   return data.messages;
-// };
-
-// export default loadTranslation;
+/**
+ * Load messages for requested locale and activate it.
+ * This function isn't part of the LinguiJS library because there're
+ * many ways how to load messages — from REST API, from file, from cache, etc.
+ */
+export async function activate(locale) {
+  const { messages } = await import(`../translations/locales/${locale}/messages.js`);
+  i18n.load(locale, messages);
+  i18n.activate(locale);
+}

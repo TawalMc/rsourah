@@ -22,6 +22,7 @@ import MainContainer from "../layouts/MainContainer";
 
 import SourahChoosedIntervale from "../components/SourahChoosedIntervale";
 import SourahBox from "../components/SourahBox";
+import { activate } from "../libs/loadTranslation";
 
 const langs = [
 	{
@@ -30,25 +31,20 @@ const langs = [
 	{
 		name: "en",
 	},
-	/* {
-		name: "ar",
-	}, */
 ];
 
 export default function Settings( props ) {
 	const router = useRouter();
 	const [locale, setLocale] = useState( router.locale );
-	const [cookie, setCookie] = useCookies( ["NEXT_LOCALE"] );
+	// const [cookie, setCookie] = useCookies( ["NEXT_LOCALE"] );
 
 	useEffect( () => {
 		router.push( router.pathname, router.pathname, { locale } );
+		// if ( cookie.NEXT_LOCALE !== locale ) setCookie( "NEXT_LOCALE", locale, { path: "/" } );
+	}, [locale]);
 
-		if ( cookie.NEXT_LOCALE !== locale )
-			setCookie( "NEXT_LOCALE", locale, { path: "/" } );
-	}, [locale] );
-
-	const updateLang = async ( data ) => {
-		setLocale( data.name );
+	const updateLang = ( data ) => {
+		setLocale(data.name);
 	};
 
 	const LangMenu = () => {
