@@ -20,7 +20,7 @@ export default function About() {
       <Text fontWeight={"bold"} fontStyle={"italic"}>
         RSourah
       </Text>
-      <Text>by TawalMc</Text>
+      <Text>TawalMc</Text>
       <HStack justifyContent="space-around" color="white">
         <SocialMediaLink
           href="https://twitter.com/Tawal_Mc"
