@@ -1,13 +1,12 @@
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-
+import { useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
-import { useCookies } from "react-cookie";
+
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 import { I18nProvider } from "@lingui/react";
 import { i18n } from "@lingui/core";
 
-import { activate } from "../libs/loadTranslation";
-import { useEffect } from "react";
+import { activate } from "@/libs/loadTranslation"
 
 const theme = extendTheme( {
 	fonts: {

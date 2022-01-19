@@ -1,16 +1,7 @@
 import { HStack, VStack, Text, Checkbox, Button } from "@chakra-ui/react";
 import React from "react";
-import { useIntervalleChoosed } from "../libs/sourahIntervaleContext";
 
 export default function SourahComponent(props) {
-  const [state, actions] = useIntervalleChoosed();
-  const [isNew, setIsNew] = React.useState(false);
-
-  const forceUpdate = () => {
-    actions.update(props.id);
-    setIsNew((old) => !old);
-  };
-
   return (
     <Button width="95%" background="gray.200" height="40px">
       <HStack /* background="red" */ width="100%" height="100%">
@@ -18,8 +9,8 @@ export default function SourahComponent(props) {
           <Checkbox
             borderColor="blue.600"
             size="lg"
-            onChange={() => forceUpdate()}
-            isChecked={state.sourahIntervalle?.includes(props.id)}
+            onChange={() => props.actions.update(props.id)}
+            isChecked={props.state?.includes(props.id)}
           />
         )}
         <VStack

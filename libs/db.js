@@ -1,5 +1,5 @@
 import Dexie from "dexie";
-import { QuranChapter } from "./fetcherAPI";
+import { useEffect, useState } from "react";
 
 const db = new Dexie("SourahDB");
 db.version(1).stores({
@@ -16,7 +16,7 @@ const addIntervale = (arr) => {
   });
 };
 
-const getIntervalle = async (arr) => {
+const getIntervalle = async () => {
   return await db.intervalle.get(0);
 };
 
@@ -39,4 +39,4 @@ const getChoosedSourah = async (index) => {
 
 const sourahData = (index) => {};
 
-export { db, addIntervale, addSourahAPI, getIntervalle, getChoosedSourah };
+export { db, addIntervale, addSourahAPI, getIntervalle, getChoosedSourah, };

@@ -1,9 +1,9 @@
 import { Heading, HStack, Text } from "@chakra-ui/react";
 
-import MainBackground from "../layouts/MainBackground";
-import MainContainer from "../layouts/MainContainer";
+import MainBackground from "@/layouts/MainBackground";
+import MainContainer from "@/layouts/MainContainer";
 
-import NextButton from "../components/NextButton";
+import NextButton from "@/components/NextButton";
 import { Trans } from "@lingui/react";
 
 export default function Home( props ) {

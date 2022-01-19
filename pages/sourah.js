@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
-import { Heading, HStack, Spinner, Text } from "@chakra-ui/react";
+import React from "react";
+import { Heading, Text } from "@chakra-ui/react";
 
-import MainBackground from "../layouts/MainBackground";
-import MainContainer from "../layouts/MainContainer";
+import MainBackground from "@/layouts/MainBackground";
+import MainContainer from "@/layouts/MainContainer";
+
+import NextButton from "@/components/NextButton";
 
 import { Trans } from "@lingui/react";
 
-import NextButton from "../components/NextButton";
-import SourahChoosedIntervale from "../components/SourahChoosedIntervale";
-import SourahBox from "../components/SourahBox";
+import SourahAndInterval from "@/components/SourahAndInterval";
 
 export default function Sourah( props ) {
+
+
 	return (
 		<MainBackground>
 			<MainContainer>
@@ -22,8 +24,7 @@ export default function Sourah( props ) {
 						{"Définissez l'intervalle de choix des sourates."}
 					</Trans>
 				</Text>
-				<SourahChoosedIntervale />
-				<SourahBox />
+				 <SourahAndInterval/>
 				<NextButton href="/rakaat" />
 			</MainContainer>
 		</MainBackground>

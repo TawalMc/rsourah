@@ -15,15 +15,11 @@ import { RiArrowDownSLine } from "react-icons/ri";
 import { Trans } from "@lingui/react";
 
 import { useRouter } from "next/dist/client/router";
-import { useCookies } from "react-cookie";
 
-import MainBackground from "../layouts/MainBackground";
-import MainContainer from "../layouts/MainContainer";
+import MainBackground from "@/layouts/MainBackground";
+import MainContainer from "@/layouts/MainContainer";
 
-
-import SourahChoosedIntervale from "../components/SourahChoosedIntervale";
-import SourahBox from "../components/SourahBox";
-// import { activate } from "../libs/loadTranslation";
+import SourahAndInterval from "@/components/SourahAndInterval";
 
 const langs = [
 	{
@@ -84,8 +80,7 @@ export default function Settings( props ) {
 						{"Définissez l'intervalle de choix des sourates."}
 					</Trans>
 				</Text>
-				<SourahChoosedIntervale />
-				<SourahBox />
+				<SourahAndInterval />
 			</MainContainer>
 		</MainBackground>
 	);
