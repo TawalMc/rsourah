@@ -1,5 +1,5 @@
-import { HStack, VStack, Text, Checkbox, Button } from "@chakra-ui/react";
-import React from "react";
+import { HStack, VStack, Text, Checkbox, Button } from "@chakra-ui/react"
+import React from "react"
 
 export default function SourahComponent(props) {
   return (
@@ -9,7 +9,7 @@ export default function SourahComponent(props) {
           <Checkbox
             borderColor="blue.600"
             size="lg"
-            onChange={() => props.actions.update(props.id)}
+            onChange={() => props.actions(props.id)}
             isChecked={props.state?.includes(props.id)}
           />
         )}
@@ -38,5 +38,5 @@ export default function SourahComponent(props) {
         </VStack>
       </HStack>
     </Button>
-  );
+  )
 }

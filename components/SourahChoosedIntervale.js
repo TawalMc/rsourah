@@ -1,9 +1,8 @@
-import { HStack, Text, Icon } from "@chakra-ui/react";
-import React, { useEffect } from "react";
-import { RiArrowLeftRightLine } from "react-icons/ri";
+import { HStack, Text, Icon } from "@chakra-ui/react"
+import React, { useEffect } from "react"
+import { RiArrowLeftRightLine } from "react-icons/ri"
 
-export default function SourahChoosedIntervale({intervalChoosed}) {
-  
+export default function SourahChoosedIntervale({ intervalChoosed }) {
   return (
     <HStack marginY="10px" justifyContent="space-around">
       <Text color="white" opacity={0.8}>
@@ -14,5 +13,5 @@ export default function SourahChoosedIntervale({intervalChoosed}) {
         {intervalChoosed[1]}
       </Text>
     </HStack>
-  );
+  )
 }

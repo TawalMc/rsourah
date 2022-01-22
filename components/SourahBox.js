@@ -1,6 +1,6 @@
-import { VStack } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react"
 
-import SourahComponent from "@/components/SourahComponent";
+import SourahComponent from "@/components/SourahComponent"
 
 export default function SourahBox(props) {
   return (
@@ -13,8 +13,14 @@ export default function SourahBox(props) {
       borderTop="1px solid white"
     >
       {props.quranAllChapters.map((chapter, _) => (
-        <SourahComponent {...chapter} withCheckbox key={chapter.name} state={props.state} actions={props.actions} />
+        <SourahComponent
+          {...chapter}
+          withCheckbox
+          key={chapter.id}
+          state={props.state}
+          actions={props.actions}
+        />
       ))}
     </VStack>
-  );
+  )
 }

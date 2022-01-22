@@ -1,32 +1,47 @@
-import SpinnerBox from "@/components/SipinnerBox";
+import SpinnerBox from "@/components/SipinnerBox"
 
-import SourahChoosedIntervale from "@/components/SourahChoosedIntervale";
-import SourahBox from "@/components/SourahBox";
+import SourahChoosedIntervale from "@/components/SourahChoosedIntervale"
+import SourahBox from "@/components/SourahBox"
 
-import { useRouter } from "next/dist/client/router";
-import useQuran from "@/libs/fetcherAPI";
-import { useLiveQuery } from "dexie-react-hooks";
-import { addSourahAPI, db } from "@/libs/db";
-import { useIntervalleChoosed } from "@/libs/sourahIntervaleContext";
-import { useEffect } from "react";
-
+import { useRouter } from "next/dist/client/router"
+import useQuran from "@/libs/fetcherAPI"
+import { addSourahAPI } from "@/libs/db"
+import { useIntervalleChoosed } from "@/libs/sourahIntervaleContext"
+import { useEffect, useState } from "react"
 
 export default function SourahAndInterval() {
-	const [state, actions] = useIntervalleChoosed();
-	const lang = useRouter().locale ?? "fr"
-	const {quranAllChapters, isLoading} = useQuran(lang) 
-	const intervalChoosed = useLiveQuery(()=> db.intervalle.get(0))?.data ?? [1, 114]
+  const [isNew, setIsNew] = useState(false)
+  const [state, actions] = useIntervalleChoosed()
+  const lang = useRouter().locale ?? "fr"
+  const { quranAllChapters, isLoading } = useQuran(lang)
 
-	useEffect(() => {
-	if (!isLoading) addSourahAPI(quranAllChapters);
-	}, [lang])
-	
-	// console.log(intervalChoosed)
+  useEffect(() => {
+    if (!isLoading) addSourahAPI(quranAllChapters)
+  }, [lang])
 
-	return (
-		<>
-			{intervalChoosed === undefined ? <SpinnerBox /> : <SourahChoosedIntervale intervalChoosed={intervalChoosed} />}
-			{isLoading || intervalChoosed === undefined  ? <SpinnerBox /> : <SourahBox  quranAllChapters={quranAllChapters} state={intervalChoosed} actions={actions} />}
-		</>
-	)
+  const setUpdate = (id) => {
+    console.log(id)
+    actions.update(id)
+
+    setIsNew((old) => !old)
+  }
+
+  return (
+    <>
+      {isLoading ? (
+        <SpinnerBox />
+      ) : (
+        <SourahChoosedIntervale intervalChoosed={state.sourahIntervalle} />
+      )}
+      {isLoading ? (
+        <SpinnerBox />
+      ) : (
+        <SourahBox
+          quranAllChapters={quranAllChapters}
+          state={state.sourahIntervalle}
+          actions={setUpdate}
+        />
+      )}
+    </>
+  )
 }

@@ -14,7 +14,7 @@
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
     "@lingui/react": "^3.12.1",
-    "dexie": "^3.2.0",
+    "dexie": "^3.2.1-beta.2",
     "dexie-react-hooks": "^1.1.1",
     "framer-motion": "^4.1.17",
     "lodash.random": "^3.2.0",

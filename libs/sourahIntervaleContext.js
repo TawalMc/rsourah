@@ -1,22 +1,20 @@
-import { createHook, createStore } from "react-sweet-state";
-import { addIntervale } from "./db";
+import { createHook, createStore } from "react-sweet-state"
 
 const sourahIntervaleReducer = (oldValue, id) => {
   //
-  let newSourahIntervalle = oldValue;
-  let indexID = newSourahIntervalle.indexOf(id);
+  let newSourahIntervalle = oldValue
+  let indexID = newSourahIntervalle.indexOf(id)
 
   if (indexID >= 0) {
-    newSourahIntervalle.splice(indexID, 1);
+    newSourahIntervalle.splice(indexID, 1)
   } else if (indexID < 0 && newSourahIntervalle.length < 2) {
-    newSourahIntervalle.push(id);
+    newSourahIntervalle.push(id)
   }
 
-  newSourahIntervalle.sort((a, b) => a - b);
-	addIntervale(newSourahIntervalle)
+  newSourahIntervalle.sort((a, b) => a - b)
 
-  return newSourahIntervalle;
-};
+  return newSourahIntervalle
+}
 
 const Store = createStore({
   initialState: { sourahIntervalle: [1, 114] },
@@ -28,17 +26,19 @@ const Store = createStore({
           sourahIntervalle: sourahIntervaleReducer(
             getState().sourahIntervalle,
             id
-          ),
-        });
+          )
+        })
       },
-		load: (arr) => ({setState, getState}) => {
-			setState({
-				sourahIntervalle: arr
-			})
-		}
-  },
-});
+    load:
+      (arr) =>
+      ({ setState, getState }) => {
+        setState({
+          sourahIntervalle: arr
+        })
+      }
+  }
+})
 
-const useIntervalleChoosed = createHook(Store);
+const useIntervalleChoosed = createHook(Store)
 
-export { sourahIntervaleReducer, useIntervalleChoosed};
+export { sourahIntervaleReducer, useIntervalleChoosed }
