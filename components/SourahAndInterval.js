@@ -16,8 +16,11 @@ export default function SourahAndInterval() {
   const { quranAllChapters, isLoading } = useQuran(lang)
 
   useEffect(() => {
-    if (!isLoading) addSourahAPI(quranAllChapters)
-  }, [lang])
+    if (!isLoading) {
+      console.log("bonsoir")
+      addSourahAPI(quranAllChapters)
+    }
+  }, [isLoading])
 
   const setUpdate = (id) => {
     console.log(id)
